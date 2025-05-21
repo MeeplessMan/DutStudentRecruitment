@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".CandidateRegisterActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Welcome Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome, Graduate!"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="#1A1A1A"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's build your profile to help employers find you."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Profile Picture Upload -->
+            <FrameLayout
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_profile_placeholder"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Profile Picture"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView"
+                    app:strokeWidth="2dp"
+                    android:padding="4dp"
+                    app:strokeColor="@android:color/holo_blue_dark" />
+
+                <ImageView
+                    android:id="@+id/imgUploadPic"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_camera"
+                    android:background="@drawable/circle_white_bg"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="4dp"
+                    android:padding="6dp"
+                    android:elevation="4dp" />
+            </FrameLayout>
+
+            <!-- Student Number -->
+            <EditText
+                android:id="@+id/editTextStudentNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Student Number"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:inputType="number"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- FirstName -->
+            <EditText
+                android:id="@+id/editTextFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- LastName -->
+            <EditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Phone -->
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:background="@drawable/edittext_bg"
+                android:inputType="phone"
+                android:padding="14dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Degree -->
+            <EditText
+                android:id="@+id/editTextQualification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Degree (e.g., Bachelor of Information and Comunication Technology)"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other qualifications"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/qualificationsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonAddQualificationField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Qualification"
+                android:backgroundTint="@color/material_dynamic_primary60"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/ic_add_circle"
+                app:iconTint="@android:color/white"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Skills -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skills"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/skillsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Skill input rows will be dynamically added here by Kotlin code.
+                     Each row will be a LinearLayout containing an EditText and a remove Button. -->
+            </LinearLayout>
+
+            <!-- Button to add a new skill input field -->
+            <Button
+                android:id="@+id/buttonAddSkillField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Skill"
+                android:backgroundTint="@color/material_dynamic_primary60"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/ic_add_circle"
+                app:iconTint="@android:color/white"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Job Titles -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jobs of Interest"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/jobContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <!-- Button to add a new skill input field -->
+            <Button
+                android:id="@+id/buttonAddJobField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add "
+                android:backgroundTint="@color/material_dynamic_primary60"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/ic_add_circle"
+                app:iconTint="@android:color/white"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Employment Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employment Type (Select all that apply)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxFullTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Full-time"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxPartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Part-time"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxContract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contract"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxInternship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Internship"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxTemporary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Temporary"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- CV Upload -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:layout_marginBottom="24dp">
+
+                <ImageView
+                    android:id="@+id/imgUploadCv"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_upload" />
+
+                <TextView
+                    android:id="@+id/textViewCv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload CV (PDF or DOC)"
+                    android:textSize="14sp"
+                    android:textColor="#333"
+                    android:layout_marginStart="12dp" />
+            </LinearLayout>
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Finish Profile"
+                android:backgroundTint="#007BFF"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:layout_marginBottom="32dp" />
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/buttonLater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Finish Later"
+                android:backgroundTint="#007BFF"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:layout_marginBottom="32dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

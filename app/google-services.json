@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "363352452014",
+    "project_id": "studentrecruitment-daf33",
+    "storage_bucket": "studentrecruitment-daf33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363352452014:android:7368f97843bcaaa4bf363f",
+        "android_client_info": {
+          "package_name": "com.example.dutstudentrecruitment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC6O_tj9Y2r7ZrMETRnIa2hc8bw92u5_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363352452014:android:e474fd801b5dc9d0bf363f",
+        "android_client_info": {
+          "package_name": "com.example.first"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC6O_tj9Y2r7ZrMETRnIa2hc8bw92u5_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
