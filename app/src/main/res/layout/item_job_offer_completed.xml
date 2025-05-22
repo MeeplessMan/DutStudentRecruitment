@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="?attr/colorSurfaceContainerLowest"> <!-- Slightly different background for distinction -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewJobTitleCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            tools:text="Product Manager"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/textViewJobLocationCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:text="San Francisco, CA"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewCompletionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorPrimary"
+            tools:text="Completed: 2023-10-26"
+            android:drawableStart="@drawable/ic_check_circle"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewHiredCandidate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:text="Hired: Jane Doe"
+            android:visibility="gone" /> <!-- Show only if applicable -->
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

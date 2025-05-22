@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -9,11 +11,26 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.DutStudentRecruitment"
-        android:screenOrientation="portrait"
-        tools:targetApi="31"
-        tools:ignore="DiscouragedApi">
+        tools:ignore="DiscouragedApi"
+        tools:targetApi="31">
+        <activity
+            android:name=".EmployerCreateJobOfferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerEditOfferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerViewOfferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CandidateUpdateProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerUpdateProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".CandidateProfileActivity"
             android:exported="false" />
@@ -31,12 +48,12 @@
             android:exported="false" />
         <activity
             android:name=".CandidateRegisterActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".EmployerRegisterActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -52,6 +69,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
+
 </manifest>

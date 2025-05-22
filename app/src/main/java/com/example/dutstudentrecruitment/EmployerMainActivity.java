@@ -126,6 +126,16 @@ public class EmployerMainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void selectTabAtIndex(int index) {
+        if (tabLayout != null && tabLayout.getTabCount() > index) {
+            TabLayout.Tab tab = tabLayout.getTabAt(index);
+            if (tab != null) {
+                tab.select();
+            }
+        }
+    }
+
     private void setupAccountOptionsMenu() {
         if (accountOptionsSpinner == null) {
             Log.e(TAG, "accountOptionsSpinner is null in setupAccountOptionsMenu. Did you call findViewById?");

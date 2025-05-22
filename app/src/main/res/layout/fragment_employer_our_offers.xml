@@ -1,13 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@android:color/white"
     tools:context=".EmployerOurOffersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Our offers" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="80dp">
+
+        <!-- Section 1: Button to Create New Job Offer -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonCreateNewJobOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Job Offer"
+            android:layout_marginBottom="24dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/blue_500"
+            app:icon="@drawable/ic_add_circle" /> <!-- Optional: Add an icon -->
+
+        <!-- Section 2: Open Job Offers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/section_background_rounded"
+            android:padding="12dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/textViewOpenJobOffersTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open Job Offers"
+                android:textColor="@color/black"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewOpenJobOffers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_job_offer_open"/>
+            <!-- tools:listitem is for preview in Android Studio, create a sample item layout -->
+
+            <TextView
+                android:id="@+id/textViewNoOpenJobOffers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No open job offers found."
+                android:gravity="center"
+                android:padding="16dp"
+                android:visibility="gone" /> <!-- Initially hidden, show if RecyclerView is empty -->
+
+        </LinearLayout>
+
+        <!-- Section 3: Completed Job Offers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_background_rounded"
+            android:padding="12dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/textViewCompletedJobOffersTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed Job Offers"
+                android:textColor="@color/black"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCompletedJobOffers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_job_offer_completed"/>
+            <!-- tools:listitem is for preview in Android Studio, create a sample item layout -->
+
+            <TextView
+                android:id="@+id/textViewNoCompletedJobOffers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No completed job offers found."
+                android:gravity="center"
+                android:padding="16dp"
+                android:visibility="gone" /> <!-- Initially hidden, show if RecyclerView is empty -->
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
