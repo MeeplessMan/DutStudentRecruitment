@@ -292,7 +292,6 @@ public class CandidateRegisterActivity extends AppCompatActivity {
     }
 
     private void uploadCv(Uri pdf){
-
         StorageReference reference = storageReference.child("cv").child(user.getUid());
         reference.putFile(pdf)
                 .addOnSuccessListener(taskSnapshot -> {

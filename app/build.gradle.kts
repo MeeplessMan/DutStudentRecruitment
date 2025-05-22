@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -51,4 +50,6 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(libs.google.firebase.firestore)
     implementation (libs.glide)
+    implementation(libs.fragment)
+    implementation(libs.appcompat)
 }

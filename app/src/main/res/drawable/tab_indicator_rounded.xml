@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- The color of the indicator.
+         This will be tinted by the app:tabIndicatorColor attribute
+         in your TabLayout, so you can set a placeholder color here
+         or use a theme attribute if you prefer. Using a solid color
+         like white or black is common as a base for tinting. -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Define the radius for the corners.
+         This example rounds only the top corners, which is a common style
+         for bottom navigation tab indicators.
+         Adjust the radius as needed. -->
+    <corners
+        android:topLeftRadius="3dp"
+        android:topRightRadius="3dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+
+    <!-- If you want all corners to be rounded, you can use:
+    <corners android:radius="3dp" />
+    -->
+
+    <!-- You can also define a specific size here, though
+         app:tabIndicatorHeight in the TabLayout is often preferred
+         for controlling the thickness.
+    <size android:height="3dp" />
+    -->
+
+</shape>

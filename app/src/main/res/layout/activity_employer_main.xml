@@ -5,32 +5,130 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".EmployerMainActivity">
 
-    <Button
-        android:id="@+id/buttonSignOut"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profile_card_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sign Out"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
-        android:id="@+id/buttonProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        app:layout_constraintStart_toEndOf="@+id/buttonSignOut"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_marginLeft="10dp"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Employer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
+        app:strokeWidth="0dp"
+        android:clipToPadding="true"
+        android:clipChildren="true"
+        app:cardBackgroundColor="@color/white"
+        app:cardUseCompatPadding="false">
+
+        <!-- Your existing LinearLayout now inside the CardView -->
+        <LinearLayout
+            android:id="@+id/profile_section_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/profile_pic_imageview"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_profile_placeholder"
+                android:contentDescription="Profile Picture"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_white_bg"/>
+
+            <TextView
+                android:id="@+id/full_name_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="A Very Long Full Name To Test The Layout Behavior"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <Spinner
+                android:id="@+id/account_options_spinner"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:background="@drawable/ic_menu"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_card_view"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/grey_500"
+        app:tabSelectedTextColor="@color/blue_500"
+        app:tabIconTint="@color/blue_500"
+        app:tabIndicatorColor="@color/blue_500"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicator="@drawable/tab_indicator_rounded"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorGravity="bottom"
+        app:tabPaddingStart="8dp"
+        app:tabPaddingEnd="8dp"
+        app:tabPaddingTop="10dp"
+        app:tabPaddingBottom="10dp">
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Main"/>
+        <!-- android:icon="@drawable/ic_tab_main" (for preview) -->
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Candidate Search"/>
+        <!-- android:icon="@drawable/ic_tab_opportunities" (for preview) -->
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat"/>
+        <!-- android:icon="@drawable/ic_tab_chat" (for preview) -->
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Our Offers"/>
+        <!-- android:icon="@drawable/ic_tab_applications" (for preview) -->
+
+    </com.google.android.material.tabs.TabLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

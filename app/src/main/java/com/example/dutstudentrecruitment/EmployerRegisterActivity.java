@@ -50,6 +50,7 @@ public class EmployerRegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private FirebaseUser user;
+    private String profileImageUrlToSave = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,16 +128,15 @@ public class EmployerRegisterActivity extends AppCompatActivity {
     }
 
     private void updateProfile(String company, String contactEmail, String phone, String slogan, String address, String businessDescription){
-        if(image != null){
-            uploadImage(image);
-        }
+
         Map<String, Object> profile = Map.of(
                 "company", company,
                 "contactEmail", contactEmail,
                 "phone", phone,
                 "slogan", slogan,
                 "address", address,
-                "businessDescription", businessDescription
+                "businessDescription", businessDescription,
+                "profileImageUrl", profileImageUrlToSave
         );
         db.collection("employer").document(user.getUid()).update(profile)
                 .addOnCompleteListener(EmployerRegisterActivity.this, task -> {
@@ -157,6 +157,7 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                 if(result.getData() != null){
                     image = result.getData().getData();
                     imgProfile.setImageURI(image);
+                    uploadImage(image);
                     Glide.with(EmployerRegisterActivity.this).load(image).into(imgProfile);
                 }
             }else{
@@ -167,16 +168,19 @@ public class EmployerRegisterActivity extends AppCompatActivity {
 
     private void uploadImage(Uri image){
         StorageReference reference = storageReference.child("profilePic").child(user.getUid());
-        reference.putFile(image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
-                Toast.makeText(EmployerRegisterActivity.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener(){
-            @Override
-            public void onFailure(@NonNull Exception e){
-                Toast.makeText(EmployerRegisterActivity.this, "Image Upload Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+        reference.putFile(image)
+                .addOnSuccessListener(taskSnapshot -> {
+                    // Image uploaded successfully, now get the download URL
+                    reference.getDownloadUrl().addOnSuccessListener(downloadUri -> {
+                        profileImageUrlToSave = downloadUri.toString(); // Store the URL
+                        Toast.makeText(EmployerRegisterActivity.this, "Profile Picture Uploaded!", Toast.LENGTH_SHORT).show();
+
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(EmployerRegisterActivity.this, "Failed to get image URL.", Toast.LENGTH_SHORT).show();
+                    });
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(EmployerRegisterActivity.this, "Image Upload Failed.", Toast.LENGTH_SHORT).show();
+                });
     }
 }

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DutStudentRecruitment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_reset_password">Reset Password</string>
+    <string name="action_delete_account">Delete Account</string>
+
+    <string-array name="account_options_array">
+        <item>@string/action_logout</item>
+        <item>@string/action_reset_password</item>
+        <item>@string/action_delete_account</item>
+    </string-array>
 </resources>
