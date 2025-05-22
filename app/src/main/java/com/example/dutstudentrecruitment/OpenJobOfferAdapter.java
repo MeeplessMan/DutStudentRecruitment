@@ -39,7 +39,7 @@ public class OpenJobOfferAdapter extends RecyclerView.Adapter<OpenJobOfferAdapte
         holder.jobTitleTextView.setText(offer.getJobTitle() != null ? offer.getJobTitle() : "N/A");
         holder.jobLocationTextView.setText(offer.getAddress() != null ? offer.getAddress() : "N/A");
         // For applicants count, you might need another query or store it in the offer
-        holder.applicantsCountTextView.setText("0 Applicants"); // Placeholder
+        holder.applicantsCountTextView.setText(offer.getApplicantCount() + " Applicants"); // Placeholder
 
         holder.buttonViewApplicants.setOnClickListener(v -> {
             Intent intent = new Intent(context, EmployerViewOfferActivity.class);

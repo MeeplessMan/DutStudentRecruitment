@@ -1,10 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployerCreateJobOfferActivity">
+    android:background="@android:color/white"
+    tools:context=".CandidateRegisterActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Welcome Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Job Offer"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="#1A1A1A"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fill out all the fields to create a job offer"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Student Number -->
+            <EditText
+                android:id="@+id/editTextJobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Title"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/editTextJobDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Description"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:inputType="textMultiLine|textCapSentences"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/editTextAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:background="@drawable/edittext_bg"
+                android:padding="14dp"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+
+            <!-- Skills -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skills"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/skillsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Skill input rows will be dynamically added here by Kotlin code.
+                     Each row will be a LinearLayout containing an EditText and a remove Button. -->
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/buttonAddSkillField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Skill"
+                android:backgroundTint="@color/material_dynamic_primary60"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/ic_add_circle"
+                app:iconTint="@android:color/white"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Employment Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employment Type (Select all that apply)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxFullTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Full-time"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxPartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Part-time"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxContract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contract"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxInternship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Internship"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <CheckBox
+                android:id="@+id/checkboxTemporary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Temporary"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginBottom="16dp"/>
+
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/buttonCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Job offer"
+                android:backgroundTint="#007BFF"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:layout_marginBottom="32dp" />
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:backgroundTint="#007BFF"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:layout_marginBottom="32dp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

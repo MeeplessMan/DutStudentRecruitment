@@ -1,59 +1,91 @@
-package com.example.dutstudentrecruitment; // Replace with your actual package name
+// Correct import for Firestore:
+package com.example.dutstudentrecruitment; // Ensure this is your correct package
 
 import com.google.firebase.firestore.PropertyName;
-import com.google.firebase.Timestamp; // For Firestore Timestamps
+import com.google.firebase.Timestamp;
+import java.util.List;
+import java.util.ArrayList; // Import ArrayList if you initialize with it
 
-import java.io.Serializable;
-
-public class JobOffer implements Serializable { // Implement Serializable to pass via Intent
-
-    private String offerId; // Document ID from Firestore
+public class JobOffer {
+    // Fields
+    private String offerId;
     private String employerUserId;
+    private String jobTitle;
+    private String jobDescription;
     private String companyName;
-    private String jobTitle; // Added this as it's common
-    private String address; // Or more detailed location fields
-    private String jobType; // "Full-time", "Part-time", "Remote", "Temporary", "Internship"
+    private String address;
+    private List<String> requiredSkills;
+    private String jobType;
     private Timestamp dateCreated;
-    private Timestamp dateCompleted; // For completed offers
-    private String status; // e.g., "open", "completed", "closed"
+    private Timestamp dateCompleted;
+    private String status;
 
-    // Required empty public constructor for Firestore
-    public JobOffer() {}
+    // New fields
+    private List<String> applicantUids; // Stores User IDs of applicants
+    private int applicantCount;         // Stores the number of applicants
 
-    public JobOffer(String employerUserId, String companyName, String jobTitle, String address, String jobType, Timestamp dateCreated, String status) {
-        this.employerUserId = employerUserId;
-        this.companyName = companyName;
-        this.jobTitle = jobTitle;
-        this.address = address;
-        this.jobType = jobType;
-        this.dateCreated = dateCreated;
-        this.status = status;
+    // Public no-argument constructor is ESSENTIAL for Firestore deserialization
+    public JobOffer() {
+        // Initialize lists to avoid null pointer exceptions if they are accessed before being set from Firestore
+        this.requiredSkills = new ArrayList<>();
+        this.applicantUids = new ArrayList<>();
+        // applicantCount will default to 0 for int, which is fine.
     }
 
-    // Getters
+    // Getters and Setters using Firestore's @PropertyName
+
+    @PropertyName("offerId")
     public String getOfferId() { return offerId; }
-    public String getEmployerUserId() { return employerUserId; }
-    public String getCompanyName() { return companyName; }
-    public String getJobTitle() { return jobTitle; }
-    public String getAddress() { return address; }
-    public String getJobType() { return jobType; }
-    public Timestamp getDateCreated() { return dateCreated; }
-    public Timestamp getDateCompleted() { return dateCompleted; }
-    public String getStatus() { return status; }
-
-
-    // Setters (Firestore needs setters if you are constructing objects manually from snapshots sometimes)
-    // Or use @PropertyName if your field names differ from Firestore document keys
     public void setOfferId(String offerId) { this.offerId = offerId; }
+
+    @PropertyName("employerUserId")
+    public String getEmployerUserId() { return employerUserId; }
     public void setEmployerUserId(String employerUserId) { this.employerUserId = employerUserId; }
-    public void setCompanyName(String companyName) { this.companyName = companyName; }
+
+    @PropertyName("jobTitle")
+    public String getJobTitle() { return jobTitle; }
     public void setJobTitle(String jobTitle) { this.jobTitle = jobTitle; }
+
+    @PropertyName("jobDescription")
+    public String getJobDescription() { return jobDescription; }
+    public void setJobDescription(String jobDescription) { this.jobDescription = jobDescription; }
+
+    @PropertyName("companyName")
+    public String getCompanyName() { return companyName; }
+    public void setCompanyName(String companyName) { this.companyName = companyName; }
+
+    @PropertyName("address")
+    public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+
+    @PropertyName("requiredSkills")
+    public List<String> getRequiredSkills() { return requiredSkills; }
+    public void setRequiredSkills(List<String> requiredSkills) { this.requiredSkills = requiredSkills; }
+
+    @PropertyName("jobType")
+    public String getJobType() { return jobType; }
     public void setJobType(String jobType) { this.jobType = jobType; }
+
+    @PropertyName("dateCreated")
+    public Timestamp getDateCreated() { return dateCreated; }
     public void setDateCreated(Timestamp dateCreated) { this.dateCreated = dateCreated; }
+
+    @PropertyName("dateCompleted")
+    public Timestamp getDateCompleted() { return dateCompleted; }
     public void setDateCompleted(Timestamp dateCompleted) { this.dateCompleted = dateCompleted; }
+
+    @PropertyName("status")
+    public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    // It's good practice to add @PropertyName if your Firestore field names are different
-    // e.g., @PropertyName("user_id") if Firestore uses snake_case
+    // Getters and Setters for new fields
+
+    @PropertyName("applicantUids")
+    public List<String> getApplicantUids() { return applicantUids; }
+    public void setApplicantUids(List<String> applicantUids) { this.applicantUids = applicantUids; }
+
+    @PropertyName("applicantCount")
+    public int getApplicantCount() { return applicantCount; }
+    public void setApplicantCount(int applicantCount) { this.applicantCount = applicantCount; }
+
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background Shape (Slightly smaller to let the border show) -->
+    <item>
+        <shape android:shape="rectangle">
+            <!--
+                Using a theme attribute for the background color is good practice.
+                ?attr/colorSurface is typically white in light theme and dark gray in dark theme.
+                ?attr/colorSurfaceContainerLowest is another good option for a slightly off-white/gray.
+                If you have a specific color like R.color.my_spinner_background, use that.
+            -->
+            <solid android:color="?attr/colorSurface" />
+            <corners android:radius="4dp" />
+            <!-- Optional: Add padding if you want more space between text and border -->
+            <!-- <padding
+                android:left="1dp"
+                android:top="1dp"
+                android:right="1dp"
+                android:bottom="1dp" /> -->
+        </shape>
+    </item>
+
+    <!-- Border Shape -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- No fill, only stroke for the border -->
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="1dp"
+                android:color="?attr/colorOutline" /> <!-- Standard Material outline color -->
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+
+    <!-- Dropdown Arrow Icon (Optional, but often part of a custom spinner background) -->
+    <!-- You can use a vector drawable for the arrow -->
+    <item
+        android:drawable="@drawable/ic_arrow_drop_down"
+        android:gravity="center_vertical|end"
+        android:end="12dp"> <!-- Adjust padding as needed -->
+    </item>
+
+</layer-list>

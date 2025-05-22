@@ -155,17 +155,43 @@ public class EmployerOurOffersFragment extends Fragment {
                 if (snapshotObject instanceof DocumentSnapshot) {
                     DocumentSnapshot offerSnapshot = (DocumentSnapshot) snapshotObject;
                     if (offerSnapshot.exists()) {
-                        JobOffer offer = offerSnapshot.toObject(JobOffer.class);
-                        if (offer != null) {
-                            offer.setOfferId(offerSnapshot.getId()); // Set the document ID
-                            // Assuming JobOffer has a 'status' field: "open", "completed"
-                            // And a 'dateCreated' (Timestamp) and 'dateCompleted' (Timestamp)
-                            if ("completed".equalsIgnoreCase(offer.getStatus())) {
-                                completedOffersList.add(offer);
-                            } else { // Treat any other status (or null status) as open for simplicity here
-                                openOffersList.add(offer);
-                            }
+                        Log.d(TAG, "fetchOfferDetails: Offer snapshot exists. ID: " + offerSnapshot.getId() + ", Data: " + offerSnapshot.getData());
+                        JobOffer offer = new JobOffer();
+                        offer.setOfferId(offerSnapshot.getId()); // Set the document ID
+
+                        // Manually get each field with type checking and defaults
+                        offer.setEmployerUserId(offerSnapshot.getString("employerUserId"));
+                        offer.setJobTitle(offerSnapshot.getString("jobTitle"));
+                        offer.setJobDescription(offerSnapshot.getString("jobDescription"));
+                        offer.setCompanyName(offerSnapshot.getString("companyName")); // Or "company" - check your Firestore
+                        offer.setAddress(offerSnapshot.getString("address"));
+                        offer.setJobType(offerSnapshot.getString("jobType"));
+                        offer.setStatus(offerSnapshot.getString("status"));
+                        offer.setDateCreated(offerSnapshot.getTimestamp("dateCreated"));
+                        offer.setDateCompleted(offerSnapshot.getTimestamp("dateCompleted"));
+
+                        // For lists like requiredSkills:
+                        List<String> skills = (List<String>) offerSnapshot.get("requiredSkills");
+                        if (skills != null) {
+                            offer.setRequiredSkills(skills);
+                        } else {
+                            offer.setRequiredSkills(new ArrayList<>()); // Initialize to empty list if null
                         }
+
+                        if (offer.getJobTitle() == null && offer.getCompanyName() == null) {
+                            Log.w(TAG, "fetchOfferDetails: Offer object created but critical fields (jobTitle, companyName) are null. Offer ID: " + offerSnapshot.getId());
+                        } else {
+                            Log.d(TAG, "fetchOfferDetails: Manually parsed JobOffer: " + offer.getJobTitle());
+                        }
+
+
+                        if ("completed".equalsIgnoreCase(offer.getStatus())) {
+                            completedOffersList.add(offer);
+                        } else {
+                            openOffersList.add(offer);
+                        }
+                    } else {
+                        Log.w(TAG, "fetchOfferDetails: Offer snapshot does NOT exist for one of the IDs.");
                     }
                 }
             }
@@ -225,6 +251,7 @@ public class EmployerOurOffersFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         // Refresh data when the fragment becomes visible again,
         // in case new offers were created or statuses changed in another screen.
         if (currentUser != null && mAuth.getCurrentUser() != null) { // Ensure user is still logged in
@@ -256,6 +283,7 @@ public class EmployerOurOffersFragment extends Fragment {
             }
         }
     }
+
 
     // You might also want to add onStart or onStop if needed,
     // but onResume is a common place for refreshing list data.

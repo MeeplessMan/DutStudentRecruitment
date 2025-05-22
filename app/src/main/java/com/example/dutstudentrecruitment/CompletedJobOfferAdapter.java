@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+import com.example.dutstudentrecruitment.JobOffer;
 // Make sure you have your JobOffer model imported
 // import com.example.dutstudentrecruitment.JobOffer;
 
